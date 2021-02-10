@@ -1,0 +1,64 @@
+body {
+  background-color: #fceec7;
+}
+
+h2 {
+  color: #d69ea0;
+  margin-top: 20px;
+
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+
+.delete {
+  margin: 9px 5px 20px;
+  padding: 7px 20px;
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.delete:hover {
+  opacity: 1
+}
+
+.mark-complete {
+  margin: 16px 0 20px 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.mark-complete:checked {
+  background-color: #2196F3;
+}
+
+#new-task-content {
+  padding: 5px 20px;
+  border-radius: 0;
+}
+
+#new-task-content:focus {
+  border-radius: 0;
+}
+
+.create {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  opacity: 0.6;
+  transition: 0.3s;
+  padding: 7px 20px;
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 7px 20px;
+  border-radius: 0;
+}
