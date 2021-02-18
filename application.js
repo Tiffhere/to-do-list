@@ -18,27 +18,46 @@ $(document).ready(function(){
     });
   }
 
-  var filterSelection = function(){
-    response.tasks.forEach(function (task) {
-      if (task == all){
-        $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+  var filterSelection = function(option){
+    $.ajax({
+      type: 'GET',
+      url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks?api_key=294',
+      dataType: 'json',
+      success: function (response, textStatus) {
+        $('#todo-list').empty();
+        response.tasks.forEach(function (task) {
+          if (option == 'all'){
+            $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
 
-      }else if (task == task.completed){
-        $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+          } else if (option == 'completed') {
+            if (task.completed) {
+              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+            }
+          } else if (option == 'active'){
+            if (!task.completed) {
+              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+            }
+          }
+        });
+
+
+      },
+      error: function (request, textStatus, errorMessage) {
+        console.log(errorMessage);
       }
-    }
+    });
   }
 
 $('.all-button').on('click', function(){
-    filterSelection();
+    filterSelection('all');
 });
 
 $('.completed-button').on('click', function(){
-  filterSelection();
+  filterSelection('completed');
 });
 
 $('.active-button').on('click', function(){
-  filterSelection();
+  filterSelection('active');
 });
 
   var createTask = function () {
