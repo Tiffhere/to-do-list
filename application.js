@@ -27,15 +27,15 @@ $(document).ready(function(){
         $('#todo-list').empty();
         response.tasks.forEach(function (task) {
           if (option == 'all'){
-            $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+            $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4 text-right"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
 
           } else if (option == 'completed') {
             if (task.completed) {
-              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4 text-right"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
             }
           } else if (option == 'active'){
             if (!task.completed) {
-              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
+              $('#todo-list').append('<div class="row"><p class="col-8 mt-3">' + task.content + '</p><div class="col-4 text-right"><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '></div>');
             }
           }
         });
